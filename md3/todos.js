@@ -28,3 +28,26 @@ function renderTodos() {
         listElement.appendChild(todoElement);
     }
 }
+
+renderTodos();
+
+function addTodo() {
+    var todoText = inputElement.value;
+
+    todos.push(todoText);
+    inputElement.value = "";
+    renderTodos();
+    saveToStorage();
+}
+
+buttonElement.onclick = addTodo;
+
+function DeleteTodo(pos) {  
+    todos.splice(pos,1)
+    renderTodos();
+    saveToStorage();
+}
+
+function saveToStorage() {
+    localStorage.setItem("list_todos", JSON.stringify(todos));
+}
